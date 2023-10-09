@@ -1,0 +1,46 @@
+* {
+	margin: 0; 
+	padding: 0;
+}
+
+/* cuerpo de la  página */
+
+body {
+    background-image: url(./resources/img/bg_blacktile.png);
+    height: 100%;
+    width: vh;
+}
+
+/* título de la página */
+.navbar-brand {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* estilo para los elementos de navbar */
+.nav-item {
+    font-family: 'Pixelify Sans', sans-serif;
+    letter-spacing: 2px;
+}
+
+/* animación en los elementos de lista vertical (dropdown) de navbar */
+.dropdown-menu {
+    animation: 0.5s slideup;
+}
+    @keyframes slideup {
+    from {
+        transform: translateY(10%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* botón de búsqueda */
+.form-control {
+    width: 200px;
+}
+
+/* bootstrap cards */
+
+
