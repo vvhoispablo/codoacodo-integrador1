@@ -1,46 +1,217 @@
 * {
-	margin: 0; 
-	padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* cuerpo de la  página */
-
+/* cuerpo de la página */
 body {
-    background-image: url(./resources/img/bg_blacktile.png);
-    height: 100%;
-    width: vh;
+  background-image: url(./resources/img/bg_blacktile.png);
 }
 
-/* título de la página */
-.navbar-brand {
-    font-size: 15px;
-    font-weight: bold;
+/* cabecera -> navbar */
+/* navbar */
+.navbar {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.18);
 }
 
-/* estilo para los elementos de navbar */
+/* navbar -> imagen del logotipo */
+.navbar .navbar-brand img {
+  max-width: 100px;
+  transition: opacity 0.3s ease-in-out; /* transición suave de opacidad */
+  border: 2px solid black;
+}
+
+.navbar-brand:hover img {
+  opacity: 0.7; /* opacidad de la imagen al pasar el cursor por encima */
+  border-color: white; /* cambia el color del borde al pasar el mouse por encima */
+}
+
+/* navbar -> pantallas con un ancho mínimo de 1200px */
+@media screen and (min-width: 1200px) {
+  .navbar {
+    letter-spacing: 0.05em;
+  }
+  .navbar-collapse .navbar-nav .nav-link {
+    padding: 0.2em 1em;
+  }
+  .navbar .navbar-brand img {
+    max-width: 7em;
+  }
+}
+
+/* navbar -> pantallas con un ancho mínimo de 768px */
+@media screen and (min-width: 768px) {
+  .navbar .navbar-brand img {
+    max-width: 6em;
+  }
+  .navbar-collapse {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+  }
+  .search-and-icons,
+  .contact-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .search-and-icons {
+    width: 45%;
+  }
+  .navbar form {
+    flex: 1;
+  }
+}
+
+/* navbar -> links */
+.navbar-collapse .navbar-nav .nav-link {
+  color: #000;
+}
+
+/* navbar -> información de contacto */ 
+.contact-info p {
+  animation: rectangularAnimation 4s infinite;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px; /* agrega bordes redondeados */
+  white-space: nowrap; /* que el texto no tenga divisióon en varias líneas */
+}
+
+
+/* navbar -> links de contacto */
+.contact-info a {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* navbar -> íconos de usuario */
+.user-icons div {
+  padding-right: 1em;
+  font-size: 1.2em;
+  color: #000;
+}
+
+.user-icons img {
+  margin-right: 20px; /* un margen de 10px de cada imagen */
+}
+
+/* navbar -> campo de búsqueda */
+.navbar form input {
+  border-radius: 0;
+}
+
+/* navbar -> campo de búsqueda de tipo "search" */
+.navbar form input[type="search"] {
+  height: 2em;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='grey' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 95%;
+}
+
+/* navbar -> campo de búsqueda de tipo "search" cuando está enfocado */
+.navbar form input[type="search"]:focus {
+  background: #fff;
+  box-shadow: none;
+}
+
+/* navbar -> centrar lista */
+.navbar-nav {
+  margin: 0 auto; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+/* navbar -> ajuste de espacio entre los elementos de la lista */
 .nav-item {
-    font-family: 'Pixelify Sans', sans-serif;
-    letter-spacing: 2px;
+  margin: 0 10px; /* espacio entre elementos*/
 }
 
-/* animación en los elementos de lista vertical (dropdown) de navbar */
+/* navbar -> animación en los elementos de lista y cabecera de bienvenida */
+/* animación en los elementos de lista */
 .dropdown-menu {
-    animation: 0.5s slideup;
-}
-    @keyframes slideup {
-    from {
-        transform: translateY(10%);
-    }
-    to {
-        transform: translateY(0);
-    }
+  animation: 0.5s slideup;
 }
 
-/* botón de búsqueda */
-.form-control {
-    width: 200px;
+@keyframes slideup {
+  from {
+      transform: translateY(10%);
+  }
+  to {
+      transform: translateY(0);
+  }
 }
 
-/* bootstrap cards */
+/* cabecera de bienvenida */
+@keyframes textInsideRectangleAnimation {
+  0% {
+      transform: translate(0, 0);
+      background-color: rgba(238, 128, 55, 0.5); 
+  }
+  25% {
+      transform: translate(100px, 0);
+      background-color: rgba(8, 6, 155, 0.5); 
+  }
+  50% {
+      transform: translate(0, 100px);
+      background-color: rgba(255, 14, 14, 0.5); 
+  }
+  75% {
+      transform: translate(-100px, 0);
+      background-color: rgba(153, 51, 204, 0.5); 
+  }
+  100% {
+      transform: translate(0, 0);
+      background-color: rgba(51, 204, 51, 0.5); 
+  }
+}
 
+.contact-info p {
+  animation: textInsideRectangleAnimation 4s infinite;
+  width: 250px; /* tamaño de la animación del rectángulo de bienvenida */
+  height: 50px; /* tamaño de la animación del rectángulo de bienvenida */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px; 
+}
 
+/* section > banner */
+.banner {
+  background-color: rgba(51, 51, 51, 0.7); 
+  color: #fff
+  padding: 60px 0; 
+  text-align: center; 
+}
+
+.banner img {
+  max-width: 100%; /* que la imagen no se desborde del contenedor */
+  height: auto; /* proporción de la imagen */
+}
+
+.banner h2 {
+  font-size: 36px; 
+}
+
+.banner p {
+  font-size: 18px; 
+}
+
+.banner a.btn {
+  background-color: #ffa53a; 
+  color: black;
+  border: none; 
+  padding: 15px 30px; 
+  font-size: 18px;
+  border-radius: 4px; 
+  transition: background-color 0.3s ease-in-out; 
+}
+
+.banner a.btn:hover {
+  background-color: white;
+  color: #ffa53a;  
+}
